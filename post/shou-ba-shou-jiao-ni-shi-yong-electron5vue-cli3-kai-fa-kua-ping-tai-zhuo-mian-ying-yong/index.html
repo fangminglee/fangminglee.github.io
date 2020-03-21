@@ -1,95 +1,96 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>手把手教你使用Electron5+vue-cli3开发跨平台桌面应用 | Gridea</title>
 <meta name="description" content="学习笔记">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+<link rel="shortcut icon" href="https://fangminglee.github.io/favicon.ico?v=1584774028707">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://fangminglee.github.io/favicon.ico?v=1584773762760">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://fangminglee.github.io/styles/main.css">
 
 
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 
   </head>
   <body>
-    <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="https://fangminglee.github.io">
-        <img class="avatar" src="https://fangminglee.github.io/images/avatar.png?v=1584773762760" alt="" width="32px" height="32px">
-      </a>
-      <a href="https://fangminglee.github.io">
-        <h1 class="site-title">Gridea</h1>
-      </a>
-    </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://fangminglee.github.io">Gridea</a></h3>
   </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
-      
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
         
-          <a href="/" class="menu purple-link">
-            首页
-          </a>
-        
-      
-        
-          <a href="/archives" class="menu purple-link">
-            归档
-          </a>
-        
-      
-        
-          <a href="/tags" class="menu purple-link">
-            标签
-          </a>
-        
-      
-        
-          <a href="/post/about" class="menu purple-link">
-            关于
-          </a>
-        
-      
-    </div>
-  </div>
-</transition>
-
-
-      <div class="content-container">
-        <div class="post-detail">
-          
-            <div class="feature-container" style="background-image: url('https://fangminglee.github.io/post-images/shou-ba-shou-jiao-ni-shi-yong-electron5vue-cli3-kai-fa-kua-ping-tai-zhuo-mian-ying-yong.webp')">
-            </div>
-          
-          <h2 class="post-title">手把手教你使用Electron5+vue-cli3开发跨平台桌面应用</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2020-03-21</span>
+          <li>
             
-          </div>
-          <div class="post-content">
-            <p>Electron是一个基于Chromium和 Node.js，可以使用 HTML、CSS和JavaScript构建跨平台应用的技术框架，兼容 Mac、Windows 和 Linux。虽然B/S是目前开发的主流，但是C/S仍然有很大的市场需求。受限于浏览器的沙盒限制，网页应用无法满足某些场景下的使用需求，而桌面应用可以读写本地文件、调用更多系统资源，再加上Web开发的低成本、高效率的优势，这种方式越来越受到开发者的喜爱。</p>
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>手把手教你使用Electron5+vue-cli3开发跨平台桌面应用</h1>
+            <p class="article-meta">
+              2020-03-21
+              
+            </p>
+            
+              <img src="https://fangminglee.github.io/post-images/shou-ba-shou-jiao-ni-shi-yong-electron5vue-cli3-kai-fa-kua-ping-tai-zhuo-mian-ying-yong.webp" alt="手把手教你使用Electron5+vue-cli3开发跨平台桌面应用">
+            
+            <div class="post-content">
+              <p>Electron是一个基于Chromium和 Node.js，可以使用 HTML、CSS和JavaScript构建跨平台应用的技术框架，兼容 Mac、Windows 和 Linux。虽然B/S是目前开发的主流，但是C/S仍然有很大的市场需求。受限于浏览器的沙盒限制，网页应用无法满足某些场景下的使用需求，而桌面应用可以读写本地文件、调用更多系统资源，再加上Web开发的低成本、高效率的优势，这种方式越来越受到开发者的喜爱。</p>
 <p>本文一步一步教你如何使用Electron5和vue-cli3，在完全保留vue开发web应用的习惯下，搭建桌面应用。</p>
 <p>本文不涉及Electron和vue的开发教程，仅以实现两者结合为目的，如深入学习Electron和vue，请访问官方：</p>
 <p>Electron: <a href="https://electronjs.org/">electronjs.org/</a></p>
@@ -914,52 +915,93 @@ M   import { app, protocol, BrowserWindow, Menu, globalShortcut } from 'electron
 <p>但是可以使用Ctrl+F12，只要不单独使用F12就可以。</p>
 <p>以上代码在开发环境和生产环境中均有效，为保证生产环境的安全，建议不要在生产环境中使用。放到上面的if语句中即可。</p>
 
-          </div>
+            </div>
+          </article>
         </div>
-
-        
-          <div class="next-post">
-            <a class="purple-link" href="https://fangminglee.github.io/post/hello-gridea">
-              <h3 class="post-title">
-                下一篇：Hello Gridea
-              </h3>
-            </a>
-          </div>
+        <div class="paper" data-aos="fade-in">
           
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://fangminglee.github.io/post/hello-gridea">
+                <h3 class="post-title">
+                  Hello Gridea
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
       </div>
 
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://fangminglee.github.io/images/avatar.png?v=1584774028707" class="no-responsive avatar">
+    <div class="text-muted">学习笔记</div>
+    <div class="social-container">
       
-
-      <div class="site-footer">
-  <div class="slogan">学习笔记</div>
-  <div class="social-container">
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
+    </div>
   </div>
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://fangminglee.github.io/atom.xml" target="_blank">RSS</a>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://fangminglee.github.io/post/shou-ba-shou-jiao-ni-shi-yong-electron5vue-cli3-kai-fa-kua-ping-tai-zhuo-mian-ying-yong">手把手教你使用Electron5+vue-cli3开发跨平台桌面应用</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://fangminglee.github.io/post/hello-gridea">Hello Gridea</a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://fangminglee.github.io/tag/DKkQObRcM" class="badge ">
+          Gridea
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://fangminglee.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
 </div>
 
 
     </div>
-    <script type="application/javascript">
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
 
 hljs.initHighlightingOnLoad()
-
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
 
 </script>
 
