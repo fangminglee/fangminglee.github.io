@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://fangminglee.github.io</id>
     <title>Gridea</title>
-    <updated>2020-03-21T06:46:02.044Z</updated>
+    <updated>2020-03-21T06:57:31.026Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://fangminglee.github.io"/>
     <link rel="self" href="https://fangminglee.github.io/atom.xml"/>
-    <subtitle>温故而知新</subtitle>
+    <subtitle>学习笔记</subtitle>
     <logo>https://fangminglee.github.io/images/avatar.png</logo>
     <icon>https://fangminglee.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Gridea</rights>
@@ -16,8 +16,7 @@
         <link href="https://fangminglee.github.io/post/shou-ba-shou-jiao-ni-shi-yong-electron5vue-cli3-kai-fa-kua-ping-tai-zhuo-mian-ying-yong">
         </link>
         <updated>2020-03-21T06:08:57.000Z</updated>
-        <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://user-gold-cdn.xitu.io/2019/7/2/16bb07e7123dfce5?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="" loading="lazy"></figure>
-<p>Electron是一个基于Chromium和 Node.js，可以使用 HTML、CSS和JavaScript构建跨平台应用的技术框架，兼容 Mac、Windows 和 Linux。虽然B/S是目前开发的主流，但是C/S仍然有很大的市场需求。受限于浏览器的沙盒限制，网页应用无法满足某些场景下的使用需求，而桌面应用可以读写本地文件、调用更多系统资源，再加上Web开发的低成本、高效率的优势，这种方式越来越受到开发者的喜爱。</p>
+        <content type="html"><![CDATA[<p>Electron是一个基于Chromium和 Node.js，可以使用 HTML、CSS和JavaScript构建跨平台应用的技术框架，兼容 Mac、Windows 和 Linux。虽然B/S是目前开发的主流，但是C/S仍然有很大的市场需求。受限于浏览器的沙盒限制，网页应用无法满足某些场景下的使用需求，而桌面应用可以读写本地文件、调用更多系统资源，再加上Web开发的低成本、高效率的优势，这种方式越来越受到开发者的喜爱。</p>
 <p>本文一步一步教你如何使用Electron5和vue-cli3，在完全保留vue开发web应用的习惯下，搭建桌面应用。</p>
 <p>本文不涉及Electron和vue的开发教程，仅以实现两者结合为目的，如深入学习Electron和vue，请访问官方：</p>
 <p>Electron: <a href="https://electronjs.org/">electronjs.org/</a></p>
@@ -550,7 +549,7 @@ macOS: app.png或app.icns 最小尺寸：512x512 （后续4.1章节用到）</p>
 </blockquote>
 <p>现在，Windows系统上可以看到开发环境的APP窗口图标已经生效了。</p>
 <p>macOS图标请参照4.1章节，并且需要在build后才能生效。</p>
-<figure data-type="image" tabindex="2"><img src="https://user-gold-cdn.xitu.io/2019/7/2/16bb0adbe3267792?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="https://user-gold-cdn.xitu.io/2019/7/2/16bb0adbe3267792?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="" loading="lazy"></figure>
 <p>( ↑ windows APP窗口及任务栏图标 ↑)</p>
 <h3 id="36-设置app窗口标题栏名称">3.6 设置APP窗口标题栏名称</h3>
 <p>修改public/index.html:</p>
@@ -586,7 +585,7 @@ M       &lt;title&gt;App Demo&lt;/title&gt;
 复制代码
 </code></pre>
 <p>运行build后的mac版本，可以看到图标都已生效了。</p>
-<figure data-type="image" tabindex="3"><img src="https://user-gold-cdn.xitu.io/2019/7/2/16bb0bc7c17f7965?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://user-gold-cdn.xitu.io/2019/7/2/16bb0bc7c17f7965?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="" loading="lazy"></figure>
 <p>(↑ macOS APP Dock图标 ↑)</p>
 <p>安装包和可执行文件的截图就不再放出了。</p>
 <p>更多详细介绍，可参阅： <a href="https://www.electron.build/icons.html">www.electron.build/icons.html</a></p>
