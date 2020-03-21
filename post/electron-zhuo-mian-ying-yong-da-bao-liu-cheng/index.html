@@ -1,0 +1,406 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Electron桌面应用打包流程 | Gridea</title>
+<link rel="shortcut icon" href="https://fangminglee.github.io/favicon.ico?v=1584778104330">
+<link href="https://cdn.remixicon.com/releases/v2.1.0/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fangminglee.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Electron桌面应用打包流程 | Gridea - Atom Feed" href="https://fangminglee.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="一. 准备工作
+1.npm的安装需要下载node.js,安装完node.js之后npm自然会有。
+
+   参考链接：http://www.runoob.com/nodejs/nodejs-install-setup.html
+
+2.Elec..." />
+    <meta name="keywords" content="electron" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://fangminglee.github.io">
+  <img class="avatar" src="https://fangminglee.github.io/images/avatar.png?v=1584778104330" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    学习笔记
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Electron桌面应用打包流程
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-03-21
+              </span>
+              <span>
+                8 min read
+              </span>
+              
+                <a href="https://fangminglee.github.io/tag/OFRtUczS2" class="post-tag">
+                  # electron
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://fangminglee.github.io/post-images/electron-zhuo-mian-ying-yong-da-bao-liu-cheng.png" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>一. 准备工作</p>
+<pre><code>1.npm的安装需要下载node.js,安装完node.js之后npm自然会有。
+
+   参考链接：http://www.runoob.com/nodejs/nodejs-install-setup.html
+
+2.Electron环境搭建
+   a、安装node.js。node官网地址：https://nodejs.org/en/
+
+   b、在windows 命令行下检查node是否安装成功。分别输入 node -v，  npm -v 。如果出现 node 和 npm 的版本号，则转下一步。否则转第一步。
+
+   c、在命令行，下载淘宝镜像命令工具 cnpm。
+
+        npm install cnpm -g --registry=http://registry.npm.taobao.org
+
+   d、用 cnpm 命令安装 electron。
+
+        cnpm install electron -g
+
+3. 首先，我们要安装electron-prebuilt，它是一个npm模块，因此我们可以使用Npm来进行安装，它是一个electron的预编译版本。
+
+npm install -g electron-prebuilt    
+4. 接下来安装electron-packager ，它也是一个npm模块，是一个用于打包electron应用的工具
+
+npm install -g electron-packager
+</code></pre>
+<p>二. 创建一个应用</p>
+<pre><code>创建一个electron应用。我们现在仅仅需要3个文件。 
+
+    index.html 
+    main.js 
+    package.json
+
+index.html使我们想要显示的页面，main.js为此应用的入口，package.json为npm项目的配置文件。
+
+1.新建一个名为myApp的文件夹
+
+2.进入项目目录进行初始化 
+
+cd myApp
+npm init
+3.新建一个package.json，内容如下：
+
+{
+  &quot;name&quot;: &quot;zzh&quot;,
+  &quot;version&quot;: &quot;0.0.1&quot;,
+  &quot;description&quot;: &quot;a simple application&quot;,
+  &quot;main&quot;: &quot;main.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,
+    &quot;start&quot;: &quot;electron .&quot;
+  },
+  &quot;author&quot;: &quot;zzh&quot;,
+  &quot;license&quot;: &quot;ISC&quot;
+}
+4.新建一个index.html, 内容如下：
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;hello electron&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+5. 新建一个main.js, 内容如下：（main.js的文件名对应package.json中main的值）
+
+const {app, BrowserWindow} = require('electron');
+let win;
+let windowConfig = {
+    width:800,
+    height:600
+};
+function createWindow(){
+    win = new BrowserWindow(windowConfig);
+    win.loadURL(`file://${__dirname}/index.html`);
+    //开启调试工具
+    win.webContents.openDevTools();
+    win.on('close',() =&gt; {
+    //回收BrowserWindow对象
+    win = null;
+    });
+    win.on('resize',() =&gt; {
+        win.reload();
+    })
+} 
+app.on('ready',createWindow);
+app.on('window-all-closed',() =&gt; {
+app.quit();
+});
+
+
+
+app.on('activate',() =&gt; {
+    if(win == null){
+        createWindow();
+    }
+})
+</code></pre>
+<p>关于浏览器BrowserWindow模块更多的参数设置可以查看官方文档https://www.w3cschool.cn/electronmanual/electronmanual-browser-window.html</p>
+<p>三. 运行</p>
+<p>现在只要在myApp目录下执行npm start 就可以运行了</p>
+<pre><code>npm start
+</code></pre>
+<p>因为我们在main.js中写了win.webContents.openDevTools(); 开启了浏览器调试工具，所以我们打开的界面是这样的：<br>
+<img src="https://fangminglee.github.io/post-images/1584777317139.png" alt="" loading="lazy"></p>
+<p>四. 打包</p>
+<p>现在整个过程进行到最后一步，我们需要打包我们自己的应用，那么如何打包，这就需要用到我们先前已经安装的electron-packager</p>
+<p>打开命令行我们可以这样使用它：</p>
+<pre><code>electron-packager . HelloWorld --win --out ../HelloWorldApp --arch=x64 --version=0.0.1
+</code></pre>
+<p>大概格式是这样的：</p>
+<pre><code>electron-packager &lt;应用目录&gt; &lt;应用名称&gt; &lt;打包平台&gt; --out &lt;输出目录&gt; &lt;架构&gt; &lt;应用版本&gt;
+</code></pre>
+<p>但是这样并不够，会提示：</p>
+<pre><code>Unable to determine Electron version. Please specify an Electron version
+</code></pre>
+<p>我们需要指明Electronversion。这个参数是当前安装Electron的版本，不知道的可以直接electron就能看到了，我这里是1.4.13，经过改进后如下：</p>
+<pre><code>electron-packager . HelloWorld --win --out ../HelloWorldApp --arch=x64 --version=0.0.1 --electron-version=1.4.13
+</code></pre>
+<p>执行完毕后，看到父级目录下已经产生了我们希望看到的应用文件夹。里面的应用程序HelloWorld.exe就可以直接打开桌面应用了。</p>
+<figure data-type="image" tabindex="1"><img src="https://fangminglee.github.io/post-images/1584777436716.png" alt="" loading="lazy"></figure>
+<p>但是每次打包的执行命令太长太麻烦了，所以我们可以把命令写进package.json中，执行命令调用它就好了。</p>
+<p>更改后的package.json如下：</p>
+<pre><code>{
+  &quot;name&quot;: &quot;zzh&quot;,
+  &quot;version&quot;: &quot;0.0.1&quot;,
+  &quot;description&quot;: &quot;a simple application&quot;,
+  &quot;main&quot;: &quot;main.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,
+    &quot;start&quot;: &quot;electron .&quot;,
+   &quot;package&quot;: &quot;electron-packager . HelloWorld --win --out ../HelloWorldApp --arch=x64 --version=1.0.0 --electron-version=1.4.13&quot;
+  },
+  &quot;author&quot;: &quot;zzh&quot;,
+  &quot;license&quot;: &quot;ISC&quot;
+}
+</code></pre>
+<p>这样我们每次打包只需要执行 npm run-script package就可以了。</p>
+<pre><code>npm run-script package
+</code></pre>
+<p>五. 更改图标</p>
+<pre><code>如果我们想要更改窗口左上角的图标和任务栏的图标，只需要在打包的命令上加个icon参数就好了
+
+electron-packager . HelloWorld --win --out ../HelloWorldApp --arch=x64 --version=1.0.0 --electron-version=1.4.13 --icon=./app/img/icon.ico
+</code></pre>
+<p>六. NSIS 打包 Electron 生成exe安装包</p>
+<p>NSIS操作简单，而且打包出来的安装包，安装过程和卸载过程都更加正规。推荐使用</p>
+<p>一. 准备</p>
+<pre><code>1.下载NSIS软件，安装
+
+    NSIS中文版下载地址：https://pan.baidu.com/s/1mitSQU0
+
+2.安装asar (参考官方文档https://www.w3cschool.cn/electronmanual/cexo1qkn.html)
+
+npm install -g asar
+</code></pre>
+<p>二. 打包</p>
+<pre><code>1.在我们electron最初的目录myApp下执行下面命令，生成asar包
+
+asar pack ./index.html app.asar
+</code></pre>
+<p>得到app.asar包</p>
+<figure data-type="image" tabindex="2"><img src="https://fangminglee.github.io/post-images/1584777492799.png" alt="" loading="lazy"></figure>
+<pre><code>2.将app.asar放到文章开始图片得到目录下的resources文件夹下
+</code></pre>
+<p>​    <img src="https://fangminglee.github.io/post-images/1584777531024.png" alt="" loading="lazy"></p>
+<pre><code>3.打开NSIS
+
+1）选择可视化脚本编辑器
+</code></pre>
+<figure data-type="image" tabindex="3"><img src="https://fangminglee.github.io/post-images/1584777566267.png" alt="" loading="lazy"></figure>
+<pre><code>2）选择使用脚本向导创建新的脚本文件，确定
+</code></pre>
+<p>​    <img src="https://fangminglee.github.io/post-images/1584777605869.png" alt="" loading="lazy"></p>
+<pre><code>3）下一步
+</code></pre>
+<figure data-type="image" tabindex="4"><img src="https://fangminglee.github.io/post-images/1584777624754.png" alt="" loading="lazy"></figure>
+<pre><code>4）设置应用名称，版本号，网址，标志随便自定义一个就好，然后下一步
+</code></pre>
+<p>​    <img src="https://fangminglee.github.io/post-images/1584777645369.png" alt="" loading="lazy"></p>
+<pre><code>5）设置安装程序图标(图标必须是ico格式)，名称，语言（SimpChinese），界面，然后下一步
+</code></pre>
+<p>​    <img src="https://fangminglee.github.io/post-images/1584777664913.png" alt="" loading="lazy"></p>
+<pre><code>6）默认，直接下一步就好
+</code></pre>
+<p>​    <img src="https://fangminglee.github.io/post-images/1584777682213.png" alt="" loading="lazy"></p>
+<pre><code>7）授权文件有就填，没有就填空白   然后下一步
+</code></pre>
+<p>​    <img src="https://fangminglee.github.io/post-images/1584777699545.png" alt="" loading="lazy"></p>
+<pre><code>8）添加应用程序文件，默认两个文件选中，删除
+</code></pre>
+<p>​    <img src="https://fangminglee.github.io/post-images/1584777717726.png" alt="" loading="lazy"></p>
+<pre><code>9）点击添加文件
+</code></pre>
+<p>​    <img src="https://fangminglee.github.io/post-images/1584777734447.png" alt="" loading="lazy"></p>
+<pre><code>添加HelloWorld.exe文件，确定
+</code></pre>
+<p>​    <img src="https://fangminglee.github.io/post-images/1584777748449.png" alt="" loading="lazy"></p>
+<pre><code>10）点击AddDirTree 
+</code></pre>
+<p>​    <img src="https://fangminglee.github.io/post-images/1584777765002.png" alt="" loading="lazy"></p>
+<pre><code>选择HelloWorld-win32-x64文件夹，选中包含子目录，确定，然后下一步
+</code></pre>
+<p>​    <img src="https://fangminglee.github.io/post-images/1584777785721.png" alt="" loading="lazy"></p>
+<pre><code>11）可修改开始菜单名称，然后下一步
+</code></pre>
+<p>​    <img src="https://fangminglee.github.io/post-images/1584777801851.png" alt="" loading="lazy"></p>
+<pre><code>12）可设置安装成功后启动的程序，默认就是我们打包后的启动程序，下一步
+</code></pre>
+<p>​    <img src="https://fangminglee.github.io/post-images/1584777822433.png" alt="" loading="lazy"></p>
+<pre><code>13）设置一些卸载时界面的提示信息，然后下一步
+</code></pre>
+<p>​    <img src="https://fangminglee.github.io/post-images/1584777836310.png" alt="" loading="lazy"></p>
+<pre><code>14）保存我们的脚本，完成，保存到桌面
+</code></pre>
+<p>​    <img src="https://fangminglee.github.io/post-images/1584777858181.png" alt="" loading="lazy"></p>
+<pre><code>    15）打开脚本文件，编译及运行
+</code></pre>
+<p>​           <img src="https://fangminglee.github.io/post-images/1584777878254.png" alt="" loading="lazy"></p>
+<pre><code>16）开始编译，请等待
+</code></pre>
+<p>​    <img src="https://fangminglee.github.io/post-images/1584777893160.png" alt="" loading="lazy"></p>
+<pre><code>17）编译完就可以安装啦
+
+![](https://fangminglee.github.io/post-images/1584777929728.png)
+</code></pre>
+<p>完成！！！</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://fangminglee.github.io/post/shou-ba-shou-jiao-ni-shi-yong-electron5vue-cli3-kai-fa-kua-ping-tai-zhuo-mian-ying-yong">
+              <h3 class="post-title">
+                手把手教你使用Electron5+vue-cli3开发跨平台桌面应用
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://fangminglee.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
